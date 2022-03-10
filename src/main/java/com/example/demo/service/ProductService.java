@@ -28,15 +28,15 @@ public class ProductService {
         return repository.save(product);
     }
 
-    public List<ProductEntity> fetchAll(boolean isAvailableOnly) {
+    public List<ProductEntity> fetchAll(long maxPrice) {
         logger.trace("A TRACE Message");
         logger.debug("A DEBUG Message");
         logger.info("An INFO Message");
         logger.warn("A WARN Message");
         logger.error("An ERROR Message");
 
-        if (isAvailableOnly) {
-            return repository.findByStockGreaterThan(0);
+        if (maxPrice!=0) {
+            return repository.findByPriceLessThanEqual(maxPrice);
         } else {
             //fetch all
             return (List<ProductEntity>) repository.findAll();

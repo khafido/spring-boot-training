@@ -19,8 +19,8 @@ public class ProductController {
     }
 
     @GetMapping("")
-    public List<ProductEntity> getProducts(@RequestParam(value = "inStock", defaultValue = "0") boolean inStock) {
-        return productService.fetchAll(inStock);
+    public List<ProductEntity> getProducts(@RequestParam(value = "maxPrice", defaultValue = "0") long maxPrice) {
+        return productService.fetchAll(maxPrice);
     }
 
     @GetMapping("{id}")

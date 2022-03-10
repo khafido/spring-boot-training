@@ -6,6 +6,8 @@ import com.example.demo.entity.StaffEntity;
 import com.example.demo.repository.StaffRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class StaffService {
     StaffRepository repository;
@@ -20,6 +22,10 @@ public class StaffService {
         staff.setBasket(new BasketEntity());
 
         return repository.save(staff);
+    }
+
+    public List<StaffEntity> fetchAll(){
+        return (List<StaffEntity>) repository.findAll();
     }
 
 }
